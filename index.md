@@ -1,37 +1,97 @@
-## Welcome to GitHub Pages
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    
+    <style>
+      body,
+      .btn {
+        transition: background-color .5s ease-in-out;
+      }
 
-You can use the [editor on GitHub](https://github.com/sstamoulas/BT-Word-Game/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+      .quote,
+      .author {
+        transition: color .5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="quote-box" class="container">
+      <div class="sub-container offset-3 col-6">
+        <div id="text" class="row">
+          <div class="offset-1 col-10 mt-4">
+            <div class="text-center">
+              <div class="p-2 h3">
+                <div class="quote"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-12">
+            <div class="offset-3 col-9 mb-4 text-right">
+              <a id="new-quote" class="btn">
+                  New Word
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var currentQuote;
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+      (function() {
+        ajaxCall();
+      })();
 
-### Markdown
+      $('#tweet-quote').on('click', function() {
+        window.open("https://www.twitter.com/intent/tweet?text=" + currentQuote);
+      })
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+      $('#new-quote').on('click', function() {
+        $('.quote').css('color', 'white')
+        $('.author').css('color', 'white')
+        setTimeout(function() {
+          ajaxCall()
+        }, 500)
+      })
 
-```markdown
-Syntax highlighted code block
+      function ajaxCall() {
+        getQuote(['bear', 'camel', 'dog', 'elephant', 'frog', 'horse', 'sheep', 'snake', 'spider', 'zebra', 'beetle', 'calf', 'crab', 'deer', 'duck', 'hedgehog', 'kitten', 'puppy', 'rat', 'worm', 'ankle', 'arm', 'elbow', 'fingers', 'foot', 'hand', 'leg', 'shoulders', 'thigh', 'wrist', 'blackboard', 'calculator', 'compass', 'eraser', 'map', 'pencil', 'sharpener', 'pin', 'protractor', 'scissors', 'tape', 'board', 'calculator', 'clock', 'computer', 'desk', 'eraser', 'hole', 'punch', 'light', 'switch', 'paper', 'clip', 'pencil', 'sharpener', 'pin', 'plug', 'rubber', 'band', 'scissors', 'sink', 'socket', 'stapler', 'tap', 'tape', 'bikini', 'blouse', 'cap', 'cardigan', 'dressing gown', 'gloves', 'handbag', 'jacket', 'pyjamas', 'shorts', 'chin', 'ear', 'eyelashes', 'eyes', 'face', 'forehead', 'freckles', 'mouth', 'neck', 'nose', 'aunt', 'grandson', 'mother', 'son', 'uncle', 'sister', 'nephew', 'cousin', 'grandfather', 'father', 'mystery', 'horror', 'detective', 'adventure', 'romance', 'fiction', 'war', 'family', 'tale', 'western', 'bread', 'cake', 'cheese', 'coffee', 'fruit', 'juice', 'meat', 'milk', 'orange', 'tea', 'beans', 'broccoli', 'carrot', 'cauliflower', 'donut', 'grapes', 'hamburger', 'salad', 'toast', 'list', 'floor', 'desk', 'cloth', 'menu', 'refrigerator', 'can', 'counter', 'plate', 'fork', 'chimney', 'flowerbed', 'gate', 'hedge', 'path', 'sky', 'steps', 'tree', 'wall', 'window', 'armchair', 'bath', 'carpet (rug)', 'chair', 'microwave oven', 'oven (stove)', 'shower', 'television', 'toilet', 'wardrobe (closet)', 'cutlery', 'hairbrush', 'hairdryer (fan)', 'heater', 'kettle', 'lawnmower', 'swing', 'toaster', 'toolbox', 'tray', 'apartment block', 'bridge', 'church', 'fountain', 'litter box', 'mailbox', 'pavement (sidewalk)', 'pay phone', 'road sign', 'street light', 'actor', 'artist', 'builder', 'doctor', 'mechanic', 'photographer', 'police officer', 'postman / mailman', 'priest', 'teacher', 'afford', 'banknote', 'bill', 'borrow', 'broke', 'buy cash', 'change', 'cheque', 'coin', 'credit card ', 'currency', 'expensive ', 'lend', 'owe', 'pay ', 'save', 'sell', 'spend ', 'worth', 'assembly', 'auditorium', 'bathroom', 'break ', 'cafeteria', 'classroom', 'combination ', 'counselor ', 'homeroom', 'lesson', 'library ', 'locker', 'nurse ', 'office', 'planner', 'playground', 'principal ', 'schedule', 'subject ', 'textbook', 'binder', 'bookstore', 'calendar', 'candy', 'machine', 'computer', 'lab', 'corridor', 'daily', 'bulletin', 'detention', 'faculty', 'lounge', 'grade', 'gym', 'late', 'bus', 'photocopier', 'report', 'sports', 'field', 'sports', 'hall', 'test', 'schedule', 'trip', 'Tuesday', 'folder', 'water', 'fountain', 'American football', 'athletics', 'bowling', 'chess', 'cricket', 'ice hockey', 'karate', 'soccer', 'swimming', 'cricket', 'fishing', 'jogging', 'pottery', 'roller skating', 'sewing', 'snooker', 'stamp collecting', 'table tennis', 'wrestling', 'carry', 'choose', 'climb', 'copy', 'cry', 'dream', 'drive', 'fly', 'knock', 'laugh', 'leave', 'lend', 'lose', 'remember', 'sell', 'sleep', 'spell', 'swim', 'wear', 'win', 'clearing up', 'cloudy', 'foggy', 'freezing', 'hot and sunny', 'overcast', 'raining', 'snowing', 'thawing', 'windy']);
+      }
 
-# Header 1
-## Header 2
-### Header 3
+      function getQuote(quotesData) {
+        var randomNumber = generateRandomNumber(quotesData.length);
+        var randomColor = generateRandomColor();
 
-- Bulleted
-- List
+        $('.sub-container').css('background-color', 'white')
+        $('body').css('background-color', randomColor)
 
-1. Numbered
-2. List
+        $('.quote').text(' ' + quotesData[randomNumber]).css('color', randomColor)
+        $('.author').text('-- ' + quotesData[randomNumber]).css('color', randomColor)
+        $('.btn').css('background-color', randomColor).css('color', 'white')
 
-**Bold** and _Italic_ and `Code` text
+        currentQuote = quotesData[randomNumber];
+      }
 
-[Link](url) and ![Image](src)
-```
+      function generateRandomNumber(length) {
+        return parseInt(Math.random() * (length));
+      }
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+      function generateRandomColor() {
+          var randomColor = generateRandomNumber(0xFFFFFF<<0).toString(16);
+          var length = randomColor.length;
+          for(var i = 0; i < length; i++) {
+            if(length < 6) {
+              randomColor = 0 + randomColor;
+              length++;
+            }
+          }
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sstamoulas/BT-Word-Game/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+          return ('#' + randomColor);
+      }
+    </script>
+  </body>
+</html>
