@@ -1,0 +1,1 @@
+const words = ['Boring', 'Lesson', 'Sleep', 'Exciting', 'Book', 'Read', 'Novel', 'Story', 'Boat', 'Sea', 'Ship', 'Travel', 'Bee', 'Animal', 'Honey', 'Yellow', 'Bedroom', 'Sleep', 'Night', 'Go', 'Beach', 'Summer', 'Holiday', 'Sunbath', 'Batman', 'Bank', 'Money', 'Building', 'ATM', 'Banana', 'Fruit', 'Monkey'];
