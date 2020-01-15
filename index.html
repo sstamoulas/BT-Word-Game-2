@@ -38,7 +38,7 @@
           <div class="offset-1 col-10 mt-4">
             <div class="text-center">
               <div class="p-2 h3">
-                <div class="quote"></div>
+                <a class="quote"></a>
               </div>
             </div>
           </div>
@@ -84,8 +84,11 @@
         $('.sub-container').css('background-color', 'white')
         $('body').css('background-color', randomColor)
 
-        $('.quote').text(' ' + quotesData[randomNumber]).css('color', randomColor)
-        $('.author').text('-- ' + quotesData[randomNumber]).css('color', randomColor)
+        $('.quote').text(' ' + quotesData[randomNumber])
+        .attr("target", "_blank")
+        .attr("href", "https://tureng.com/tr/turkce-ingilizce/" + quotesData[randomNumber])
+        .text(quotesData[randomNumber])
+        .css('color', randomColor)
         $('.btn').css('background-color', randomColor).css('color', 'white')
 
         currentQuote = quotesData[randomNumber];
